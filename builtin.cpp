@@ -1010,15 +1010,15 @@ static int builtin_emit(parser_t &parser, wchar_t **argv)
 
     }
 
-    for (; woptind < argc; woptind++)
+    std::auto_ptr<wcstring_list_t> args = std::auto_ptr<wcstring_list_t>(new wcstring_list_t);
+    wchar_t *eventname = argv[woptind];
+    for (woptind++; woptind < argc; woptind++)
     {
-        event_fire_generic(argv[woptind]);
+        args->push_back(argv[woptind]);
     }
+    event_fire_generic(eventname, args);
 
     return STATUS_BUILTIN_OK;
-
-
-
 }
 
 

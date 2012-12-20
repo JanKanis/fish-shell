@@ -173,8 +173,7 @@ wcstring event_get_desc(const event_t *e);
 /**
    Fire a generic event with the specified name
 */
-#define event_fire_generic( ... ) event_fire_generic_internal( __VA_ARGS__, NULL )
-
-void event_fire_generic_internal(const wchar_t *name,...);
+void event_fire_generic(const wchar_t *name); 
+void event_fire_generic(const wchar_t *name, std::auto_ptr<wcstring_list_t> args);
 
 #endif
