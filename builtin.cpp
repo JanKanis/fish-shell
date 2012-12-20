@@ -1016,7 +1016,7 @@ static int builtin_emit(parser_t &parser, wchar_t **argv)
     {
         args.push_back(argv[woptind]);
     }
-    event_fire_generic(eventname, args);
+    event_fire_generic(eventname, &args);
 
     return STATUS_BUILTIN_OK;
 }

@@ -664,18 +664,15 @@ void event_free(event_t *e)
     delete e;
 }
 
-void event_fire_generic(const wchar_t *name, wcstring_list_t &args)
+void event_fire_generic(const wchar_t *name, wcstring_list_t *args)
 {
     CHECK(name,);
 
     event_t ev(EVENT_GENERIC);
     ev.str_param1 = name;
-    ev.arguments = args;
+    if (args)
+        ev.arguments = *args;
     event_fire(&ev);
-}
-void event_fire_generic(const wchar_t *name) {
-		wcstring_list_t args;
-		event_fire_generic(name, args);
 }
 
 event_t event_t::signal_event(int sig)

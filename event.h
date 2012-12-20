@@ -180,7 +180,6 @@ wcstring event_type_str(const event_t &e);
 /**
    Fire a generic event with the specified name
 */
-void event_fire_generic(const wchar_t *name); 
-void event_fire_generic(const wchar_t *name, wcstring_list_t &args);
+void event_fire_generic(const wchar_t *name, wcstring_list_t *args = NULL);
 
 #endif
